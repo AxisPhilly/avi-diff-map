@@ -37,13 +37,29 @@ app.initMap = function(callback) {
       .tilejson(tilejson)
       .on({
           on: function(o){
-            $('#tooltip').html(
-              "<strong>" + o.data.address + "</strong><br>" +
-              "Current Assessment: " + o.data.old_mv
-            );
+            var contents =  "<strong>" + o.data.address + "</strong><br> Current Assessment: " + o.data.old_mv;
+
+            if ($('#tooltip').length) {
+                $('#tooltip').html(contents).show();
+              } else {
+                $('<div/>', {
+                  'id': 'tooltip',
+                  html: contents
+                }).appendTo('#map').show();
+              }
+
+            var offset = $('#map').offset();
+
+            $(document).mousemove(function(e){
+              var posX = e.pageX - offset.left - 100;
+                  posY = e.pageY - offset.top - 70;
+
+              $('#tooltip').css({ left: posX, top: posY });
+            });
           },
           off: function(o) {
-            //$('#tooltip').hide();
+            $('#tooltip').hide();
+            $(document).unbind('mousemove');
           }
         });
 
