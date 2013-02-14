@@ -88,12 +88,13 @@ hr {
   position: absolute;
   z-index: 999998;
   right: 10px;
-  bottom: 30px;
+  bottom: 42px;
   padding: 4px 9px;
   min-width: 180px;
   max-height: 400px;
   overflow: auto;
   font-size: 14px;
+  width: 370px;
 }
 
 .my-legend em {
