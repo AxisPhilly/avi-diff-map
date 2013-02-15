@@ -37,10 +37,11 @@ app.initMap = function(callback) {
       .tilejson(tilejson)
       .on({
           on: function(o){
-            var contents =  "<strong>" + o.data.address + "</strong><br> Current Assessment: " + o.data.old_mv;
-
-            if ($('#tooltip').length && app.map._zoom >= 16) {
-                $('#tooltip').html(contents).show();
+            if (app.map._zoom >= 16) {
+              var contents =  "<strong>" + o.data.address + "</strong><br> Current Assessment: " + o.data.old_mv;
+              
+              if ($('#tooltip').length) {
+                  $('#tooltip').html(contents).show();
               } else {
                 $('<div/>', {
                   'id': 'tooltip',
@@ -48,14 +49,15 @@ app.initMap = function(callback) {
                 }).appendTo('#map').show();
               }
 
-            var offset = $('#map').offset();
+              var offset = $('#map').offset();
 
-            $(document).mousemove(function(e){
-              var posX = e.pageX - offset.left - 100;
-                  posY = e.pageY - offset.top - 70;
+              $(document).mousemove(function(e){
+                var posX = e.pageX - offset.left - 100;
+                    posY = e.pageY - offset.top - 70;
 
-              $('#tooltip').css({ left: posX, top: posY });
-            });
+                $('#tooltip').css({ left: posX, top: posY });
+              });
+            }
           },
           off: function(o) {
             $('#tooltip').hide();
