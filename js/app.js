@@ -20,6 +20,12 @@ app.mergeMapSettings = function() {
   return mapParams;
 };
 
+Number.prototype.formatMoney = function(){
+  var c=2, d='.', t=',';
+  var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+  return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+};
+
 // Create the map
 app.initMap = function(callback) {
   var mapSettings = app.mergeMapSettings();
@@ -38,8 +44,13 @@ app.initMap = function(callback) {
       .on({
           on: function(o){
             if (app.map._zoom >= 16) {
-              var contents =  "<strong>" + o.data.address + "</strong><br> Current Assessment: " + o.data.old_mv;
-              
+              var contents =  "<strong>" + o.data.address + "</strong><br/>" +
+                              "Approved for Homestead Exemption: " + o.data.homestd_ex + "<br>" +
+                              "2013 Tax: $" + Number(o.data.tx_2013).formatMoney() + "<br>" +
+                              "2014 Tax: $" + Number(o.data.tx_2014).formatMoney() + "<br>" +
+                              "Change in Tax: " + Number(o.data.tax_change * 100).toFixed(0)  + '%';
+
+
               if ($('#tooltip').length) {
                   $('#tooltip').html(contents).show();
               } else {
@@ -53,7 +64,7 @@ app.initMap = function(callback) {
 
               $(document).mousemove(function(e){
                 var posX = e.pageX - offset.left - 100;
-                    posY = e.pageY - offset.top - 70;
+                    posY = e.pageY - offset.top - 140;
 
                 $('#tooltip').css({ left: posX, top: posY });
               });
