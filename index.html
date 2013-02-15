@@ -95,6 +95,11 @@
               'Colors: <a href="http://colorbrewer2.org/">ColorBrewer.org</a>'
             );
 
+            // Insert embed code
+            $('.embed').click(function(){
+              alert('Use this code to embed this map at the current location and zoom level: <iframe width="100%" height="600" src="' + document.URL + '" frameborder="0"></iframe>');
+            });
+
           });
         });
     </script>
