@@ -39,7 +39,7 @@ app.initMap = function(callback) {
           on: function(o){
             var contents =  "<strong>" + o.data.address + "</strong><br> Current Assessment: " + o.data.old_mv;
 
-            if ($('#tooltip').length) {
+            if ($('#tooltip').length && app.map._zoom >= 16) {
                 $('#tooltip').html(contents).show();
               } else {
                 $('<div/>', {
