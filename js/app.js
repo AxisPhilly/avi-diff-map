@@ -21,10 +21,15 @@ app.mergeMapSettings = function() {
 };
 
 Number.prototype.formatMoney = function(){
-  var c=2, d='.', t=',';
+  var c=0, d='.', t=',';
   var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
   return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 };
+//http://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript
+
+function toTitleCase(str){
+  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
 
 // Create the map
 app.initMap = function(callback) {
@@ -45,7 +50,7 @@ app.initMap = function(callback) {
           on: function(o){
             if (app.map._zoom >= 16) {
               var contents =  "<strong>" + o.data.address + "</strong><br/>" +
-                              "Approved for Homestead Exemption: " + o.data.homestd_ex + "<br>" +
+                              "Approved for Homestead Exemption: " + toTitleCase(o.data.homestd_ex) + "<br>" +
                               "2013 Tax: $" + Number(o.data.tx_2013).formatMoney() + "<br>" +
                               "2014 Tax: $" + Number(o.data.tx_2014).formatMoney() + "<br>" +
                               "Change in Tax: " + Number(o.data.tax_change * 100).toFixed(0)  + '%';

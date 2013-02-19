@@ -29,9 +29,10 @@
         <h2>Property Tax Changes</h2>
         <div id="hide" class="toggle"><i>&#8613</i> Collapse</div>
         <p class="description">
-          This map shows how much taxes would change for most properties if council passes a tax rate of 1.34% and a $30,000 Homestead Exemption. We'll be updating it as the city decides what the final rate will be. <br><br>Search for a specific to zoom in on a neighborhood. Hover over a parcel to get more detailed information for that parcel.
+          This map shows how property taxes would change for most properties if City Council passes a tax rate of 1.34% and a $30,000 Homestead Exemption. We'll be updating this map as the city decides what the final rate and exemption amounts will be.
         </p>
-        <p class="note"><em>Note: Parcels that could not be matched to a tax record or had incomplete tax data are not shown.</em>
+        <p class="description">Search for a specific address to zoom in on a neighborhood. Hover over a parcel to get more detailed information for that parcel.</p>
+        <p class="note"><em>Updated 2/17/2013: Parcels that have not yet been reassessed under AVI--mostly concentrated in the northwest--were incorrectly added to this map. They have been removed. Parcels that were not originally shown--mostly parcels with abatements--have been added. Parcels that could not be matched to a tax record are not shown. The legend has also been adjusted to better fit the data.</em>
         </p>
         <hr>
         <p>Search for a Philadelphia address: </p>
@@ -84,7 +85,7 @@
           // Default settings. Overridden by URL params, if they exist
           app.opts = {
             mapContainer: 'map',
-            tileURL: 'http://api.tiles.mapbox.com/v3/axisphilly.map-edzrbggs.jsonp',
+            tileURL: 'http://api.tiles.mapbox.com/v3/axisphilly.map-1th3hk03.jsonp',
             mapOptions: {
               center: [39.978, -75.174],
               zoom: 13,
@@ -105,9 +106,14 @@
               'Colors: <a href="http://colorbrewer2.org/">ColorBrewer.org</a>'
             );
 
+            // Legend fixes
             $('span.middle').css({
               'background': '#777'
             })
+
+            $('.start.decrease em').css({
+              'margin-right': '3px'
+            });
 
             // Insert embed code
             $('.embed').click(function(){
