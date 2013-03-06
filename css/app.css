@@ -48,6 +48,10 @@ hr {
   font-style: italic;
 }
 
+#address {
+  width: 340px;
+}
+
 #show {
   position: absolute;
   top: 12px;
