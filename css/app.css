@@ -37,6 +37,7 @@ hr {
   top: 10px;
   left: 50px;
   padding-bottom: 10px;
+  z-index: 101;
 }
 
 .toggle {
