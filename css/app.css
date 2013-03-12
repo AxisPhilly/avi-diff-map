@@ -1,4 +1,6 @@
-body {
+html, body {
+  width: 100%;
+  height: 100%;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #333;
@@ -13,6 +15,28 @@ hr {
   border: 0;
   height: 1px;
   background: #ccc;
+  margin: 2px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 14px;
+}
+
+input[type="text"] {
+  display: inline;
+}
+
+form {
+  margin: 0;
+}
+
+.byline {
+  font-size: 18px;
+  margin: 0.2em 0.3em;
 }
 
 #map {
@@ -25,11 +49,15 @@ hr {
 }
 
 .container {
-  border: 2px solid #ccc;
+  border: 1px solid #222;
   padding: 5px;
   position: absolute;
   z-index: 100;
   background-color: #fff;
+}
+
+#tooltip.container {
+  font-size: 12px;
 }
 
 #info {
@@ -56,11 +84,16 @@ hr {
 #show {
   position: absolute;
   top: 12px;
-  left: 422px;
+  left: 410px;
   z-index: 102;
-  width: 70px;
+  width: 84px;
   display: none;
   border: 0;
+  font-size: 14px;
+}
+
+#hide {
+  font-size: 14px;
 }
 
 #toggle i {
@@ -87,7 +120,7 @@ hr {
 
 /* wax legend stuff */
 .my-legend {
-  border: 2px solid #ccc;
+  border: 1px solid #222;
   background-color: #fff;
   position: absolute;
   z-index: 999998;
@@ -98,10 +131,18 @@ hr {
   max-height: 400px;
   overflow: auto;
   font-size: 14px;
-  width: 370px;
+  width: 385px;
 }
 
 .my-legend em {
   display: inline-block;
   margin-top: 4px;
+}
+
+.legend-labels {
+  font-size: 12px;
+}
+
+.groups {
+  font-size: 12px;
 }
