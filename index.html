@@ -158,8 +158,9 @@
             });
 
             // Insert embed code
+            $('.embed').html('<a href="#" data-reveal-id="embed-code">Embed this map</a>')
             $('.embed').click(function(){
-              alert('Use this code to embed this map at the current location and zoom level: <iframe width="100%" height="600" src="' + document.URL + '" frameborder="0"></iframe>');
+              $('#embed-code .url').html('<code>&lt;iframe width="100%" height="600" src="' + document.URL + '" frameborder="0"></iframe></code>');
             });
 
           });
@@ -170,6 +171,11 @@
       <p>Style changes were made to the map to better match the AxisPhilly website style. No map data was updated.</p>
       <strong>Feb. 17, 2013</strong>
       <p>Parcels that have not yet been reassessed under AVI--mostly concentrated in the northwest--were incorrectly added to this map. They have been removed. Parcels that were not originally shown--mostly parcels with abatements--have been added. Parcels that could not be matched to a tax record are not shown. The legend has also been adjusted to better fit the data.</p>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+    <div id="embed-code" class="reveal-modal medium">
+      Use this code to embed this map at the current location and zoom level: 
+      <span class="url"></span>
       <a class="close-reveal-modal">&#215;</a>
     </div>
   </body>

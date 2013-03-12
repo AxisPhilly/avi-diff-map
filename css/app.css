@@ -76,6 +76,10 @@ form {
   z-index: 105;
 }
 
+#embed-code {
+  font-size: 14px;
+}
+
 .toggle {
   padding: 10px;
   position: absolute;
