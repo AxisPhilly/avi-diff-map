@@ -68,6 +68,14 @@ form {
   z-index: 101;
 }
 
+#info a {
+  font-size: 16px;
+}
+
+.reveal-modal {
+  z-index: 105;
+}
+
 .toggle {
   padding: 10px;
   position: absolute;
