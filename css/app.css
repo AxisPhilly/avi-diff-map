@@ -39,6 +39,14 @@ form {
   margin: 0.2em 0.3em;
 }
 
+#info .byline a {
+  font-size: 16px;
+}
+
+a {
+  font-size: 11px;
+}
+
 #map {
   margin: 0;
   position: absolute;
@@ -69,7 +77,7 @@ form {
 }
 
 #info a {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .reveal-modal {
@@ -77,6 +85,10 @@ form {
 }
 
 #embed-code {
+  font-size: 14px;
+}
+
+.embed a {
   font-size: 14px;
 }
 
@@ -157,4 +169,13 @@ form {
 
 .groups {
   font-size: 12px;
+}
+
+#geocoder-input {
+  width: 350px;
+}
+
+#revision-history {
+  height: 50%;
+  overflow-y: auto;
 }
