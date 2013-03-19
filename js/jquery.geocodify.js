@@ -2,7 +2,7 @@
     $.fn.geocodify = function(options) {
 
         var settings = {
-          'width' : 400,
+          'width' : 360,
           'height' : 27,
           'fontSize': '16px',
           'buttonValue': 'GO',
