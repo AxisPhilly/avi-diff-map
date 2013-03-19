@@ -71,7 +71,7 @@ app.initMap = function(callback) {
 
               $(document).mousemove(function(e){
                 var posX = e.pageX - offset.left - 130;
-                    posY = e.pageY - offset.top - 150;
+                    posY = e.pageY - offset.top - 170;
 
                 $('#tooltip').css({ left: posX, top: posY });
               });
