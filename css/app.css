@@ -105,6 +105,10 @@ a {
   width: 340px;
 }
 
+.note {
+  font-style: italic;
+}
+
 #show {
   position: absolute;
   top: 12px;
