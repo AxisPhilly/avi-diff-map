@@ -50,7 +50,7 @@ app.initMap = function(callback) {
           on: function(o){
             if (app.map._zoom >= 16) {
               var contents =  "<strong>" + o.data.address + "</strong><br/>" +
-                              "Approved for Homestead Exemption: " + toTitleCase(o.data.homestd_ex) + "<br>" +
+                              "Homestead Exemption: " + toTitleCase(o.data.homestd_ex) + "<br>" +
                               "2013 Market Value: $" + Number(o.data.mktval_13).formatMoney() + "<br>" +
                               "2013 Tax: $" + Number(o.data.tx_2013).formatMoney() + "<br>" +
                               "2014 Market Value: $" + Number(o.data.mktval_14).formatMoney() + "<br>" +
@@ -68,6 +68,14 @@ app.initMap = function(callback) {
               }
 
               var offset = $('#map').offset();
+
+              //ipad fix
+              $(document).click(function(e){
+                var posX = e.pageX - offset.left - 130;
+                    posY = e.pageY - offset.top - 170;
+
+                $('#tooltip').css({ left: posX, top: posY });
+              });
 
               $(document).mousemove(function(e){
                 var posX = e.pageX - offset.left - 130;
