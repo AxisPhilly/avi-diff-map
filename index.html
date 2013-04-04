@@ -160,4 +160,42 @@
       <a class="close-reveal-modal">&#215;</a>
     </div>
   </body>
+  <script type="text/template" id="tooltip-template">
+    <div>
+      <div><strong class="address"><%= address %></strong><span class="change <%= app.getClass(tax_change) %>"><%= Number(tax_change * 100).toFixed(0) %>%</span></div>
+      <div class="labels">
+        <ul>
+          <li><br></li>
+          <li>Assessment</li>
+          <li>Improvement Value</li>
+          <li>Land Value</li>
+          <li>Exemption/Abatement</li>
+          <li>Homestead</li>
+          <li><strong>Tax</strong></li>
+        </ul>
+      </div>
+      <div class="ul-container">
+        <ul>
+          <li><strong>2013</strong></li>
+          <li>$<%= Number(mktval_13).formatMoney() %></li>
+          <li>$<%= Number(impval_13).formatMoney() %></li>
+          <li>$<%= Number(landval_13).formatMoney() %></li>
+          <li>$<%= Number(abat_ex_13).formatMoney() %></li>
+          <li><br></li>
+          <li><strong>$<%= Number(tx_2013).formatMoney() %></strong></li>
+        </ul>
+      </div>
+      <div class="ul-container">
+        <ul>
+          <li><strong>2014</strong></li>
+          <li>$<%= Number(mktval_14).formatMoney() %></li>
+          <li>$<%= Number(impval_14).formatMoney() %></li>
+          <li>$<%= Number(landval_14).formatMoney() %></li>
+          <li>$<%= Number(abat_ex_14).formatMoney() %></li>
+          <li><%= toTitleCase(homestd_ex) %></li>
+          <li><strong>$<%= Number(tx_2014).formatMoney() %></strong></li>
+        </ul>
+      </div>
+    </div>
+  </script>
 </html>

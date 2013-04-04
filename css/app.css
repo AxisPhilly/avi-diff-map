@@ -64,8 +64,56 @@ a {
   background-color: #fff;
 }
 
+#tooltip {
+  width: 320px;
+}
+
+#tooltip .address { 
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+#tooltip .change {
+  float: right;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #444;
+  padding: 1px 3px;
+}
+
+#tooltip div.ul-container {
+  display: inline;
+}
+
+#tooltip div.labels {
+  display: inline;
+}
+
 #tooltip.container {
   font-size: 12px;
+}
+
+#tooltip ul {
+  display: inline-block;
+  width: 28%;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+#tooltip .labels ul {
+  width: 40%;
+  display: inline-block;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+#tooltip ul li {
+  font-size: 12px;
+}
+
+#toggle i {
+  font-size: 20px;
 }
 
 #info {
@@ -124,14 +172,6 @@ a {
   font-size: 14px;
 }
 
-#toggle i {
-  font-size: 20px;
-}
-
-#tooltip {
-
-}
-
 #logo {
   height: 31px;
   width: 142px;
@@ -182,4 +222,52 @@ a {
 #revision-history {
   height: 50%;
   overflow-y: auto;
+}
+
+.step-zero {
+  color: #4393C3;
+}
+
+.step-one {
+  color: #92C5DE; 
+}
+
+.step-two {
+  color: #bedef0; 
+}
+
+.step-three {
+  color: #C8C8C8; 
+}
+
+.step-four {
+  color: #FEE0D2; 
+}
+
+.step-five {
+  color: #FCBBA1; 
+}
+
+.step-six {
+  color: #FC9272; 
+}
+
+.step-seven {
+  color: #FB6A4A; 
+}
+
+.step-eight {
+  color: #EF3B2C; 
+}
+
+.step-nine {
+  color: #CB181D; 
+}
+
+.step-ten {
+  color: #A50F15; 
+}
+
+.step-eleven {
+  color: #67000D; 
 }

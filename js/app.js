@@ -20,6 +20,51 @@ app.mergeMapSettings = function() {
   return mapParams;
 };
 
+app.getClass = function(value) {
+  var colorClass = '';
+
+  switch(true) {
+    case (value <= - 1):
+      colorClass = 'step-zero';
+      break;
+    case (value > - 1) && (value <= -0.5):
+      colorClass = 'step-one';
+      break;
+    case (value > - 0.5) && (value < -0.1):
+      colorClass = 'step-two';
+      break;
+    case (value >= - 0.1) && (value <= 0.1):
+      colorClass = 'step-three';
+      break;
+    case (value > 0.1) && (value <= 0.5):
+      colorClass = 'step-four';
+      break;
+    case (value > 0.5) && (value <= 1):
+      colorClass = 'step-five';
+      break;
+    case (value > 1) && (value <= 2):
+      colorClass = 'step-six';
+      break;
+    case (value > 2) && (value <= 4):
+      colorClass = 'step-seven';
+      break;
+    case (value > 4) && (value <= 6):
+      colorClass = 'step-eight';
+      break;
+    case (value > 6) && (value <= 8):
+      colorClass = 'step-nine';
+      break;
+    case (value > 8) && (value <= 10):
+      colorClass = 'step-ten';
+      break;
+    case (value > 10):
+      colorClass = 'step-eleven';
+      break;
+  }
+
+  return colorClass;
+};
+
 Number.prototype.formatMoney = function(){
   var c=0, d='.', t=',';
   var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c), 10) + "", j = (j = i.length) > 3 ? j % 3 : 0;
@@ -49,21 +94,14 @@ app.initMap = function(callback) {
       .on({
           on: function(o){
             if (app.map._zoom >= 16) {
-              var contents =  "<strong>" + o.data.address + "</strong><br/>" +
-                              "Homestead Exemption: " + toTitleCase(o.data.homestd_ex) + "<br>" +
-                              "2013 Market Value: $" + Number(o.data.mktval_13).formatMoney() + "<br>" +
-                              "2013 Tax: $" + Number(o.data.tx_2013).formatMoney() + "<br>" +
-                              "2014 Market Value: $" + Number(o.data.mktval_14).formatMoney() + "<br>" +
-                              "2014 Tax: $" + Number(o.data.tx_2014).formatMoney() + "<br>" +
-                              "Change in Tax: " + Number(o.data.tax_change * 100).toFixed(0)  + '%';
-
+              var template = _.template($('#tooltip-template').html());
 
               if ($('#tooltip').length) {
-                  $('#tooltip').html(contents).show();
+                  $('#tooltip').html(template(o.data)).show();
               } else {
                 $('<div/>', {
                   'id': 'tooltip',
-                  html: contents
+                  html: template(o.data)
                 }).appendTo('#map').show();
               }
 
@@ -71,15 +109,15 @@ app.initMap = function(callback) {
 
               //ipad fix
               $(document).click(function(e){
-                var posX = e.pageX - offset.left - 130;
-                    posY = e.pageY - offset.top - 170;
+                var posX = e.pageX - offset.left - 170;
+                    posY = e.pageY - offset.top - 200;
 
                 $('#tooltip').css({ left: posX, top: posY });
               });
 
               $(document).mousemove(function(e){
-                var posX = e.pageX - offset.left - 130;
-                    posY = e.pageY - offset.top - 170;
+                var posX = e.pageX - offset.left - 170;
+                    posY = e.pageY - offset.top - 200;
 
                 $('#tooltip').css({ left: posX, top: posY });
               });
